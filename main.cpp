@@ -14,7 +14,13 @@ int main(void)
     vector<int> yellow_tiles;
     vector<int> black_tiles;
     vector<int> blue_tiles;
-    cout<<"Rummi Cube Solver"<<endl;
+    cout<<
+    " ____                                _               _             ____          _                    \n"<<
+    "|  _ \\  _   _  _ __ ___   _ __ ___  (_)  ___  _   _ | |__    ___  / ___|   ___  | |__   __  ___  _ __ \n"<<
+    "| |_) || | | || '_ ` _ \\ | '_ ` _ \\ | | / __|| | | || '_ \\  / _ \\ \\___ \\  / _ \\ | |\\ \\ / / / _ \\| '__|\n"<<
+    "|  _ < | |_| || | | | | || | | | | || || (__ | |_| || |_) ||  __/  ___) || (_) || | \\ V / |  __/| |   \n"<<
+    "|_| \\_\\ \\__,_||_| |_| |_||_| |_| |_||_| \\___| \\__,_||_.__/  \\___| |____/  \\___/ |_|  \\_/   \\___||_|   "<<endl;
+
     cout<<"Write Your Tiles"<<endl;
     cout<<"# of Received Red Tiles (ex: 5): ";
     cin>>num_of_red_tiles;
