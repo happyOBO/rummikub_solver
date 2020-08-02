@@ -364,6 +364,7 @@ int main(void)
             else
             {
                 error_msg();
+                init();
             }
             
         }
