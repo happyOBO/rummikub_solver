@@ -7,14 +7,14 @@
 
 using namespace std;
 
-int main(void)
-{
-    int num_of_red_tiles,num_of_yellow_tiles,num_of_black_tiles,num_of_blue_tiles;
-    vector<int> red_tiles;
-    vector<int> yellow_tiles;
-    vector<int> black_tiles;
-    vector<int> blue_tiles;
+int num_of_red_tiles,num_of_yellow_tiles,num_of_black_tiles,num_of_blue_tiles;
+vector<int> red_tiles;
+vector<int> yellow_tiles;
+vector<int> black_tiles;
+vector<int> blue_tiles;
 
+void start(void)
+{
     cout<<
     " ____                                _               _             ____          _                    \n"<<
     "|  _ \\  _   _  _ __ ___   _ __ ___  (_)  ___  _   _ | |__    ___  / ___|   ___  | |__   __  ___  _ __ \n"<<
@@ -110,4 +110,11 @@ int main(void)
     {
         cout<<"You typed it wrong. Retry."<<endl;
     }
+
+
+}
+
+int main(void)
+{
+    start();
 }
