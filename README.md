@@ -9,8 +9,7 @@
 
 ## Rummicube Solver
 
-I like the RummiCube board game. I have a strong desire to win. I wondered if it was a losing game because the cards I received in the RummiCube game were not good or if I lost because I was not good enough.
- 
+I like the RummiCube board game. I have a strong desire to win. After losing a series of Rummikub games, I thought. Was I unlucky enough to win with the tiles I got? or Is it because I'm not good enough? This program proposes a solution of all the tiles I can register. If you use this and lose, you're unlucky.
 
 ## How to play
 
