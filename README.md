@@ -33,9 +33,25 @@ Laying tiles on the table shall be arranged according to the following condition
 
 - [x] ~~enter the 14 tiles received by color.~~
 - [x] ~~get iput usig ```map```~~
-- [ ] Among the 14 tiles received, select the ones that can be registered.
-- [ ] Comming soon..
+- [x] ~~Among the 14 tiles received, select the ones that can be registered.~~
+- [ ] Show tiles on the table
+- [ ] Write Laying My tiles on the table
+- [ ] Write Laying Other's tiles on the table
+- [ ] Determine which tiles can be submitted, including those on the table.
 
-### Current Executon Screen
+## Current Executon Screen
 
-![Excute_Screen](./images/solver_img.png)
+### Initialize my tiles. (press ``button 1``)
+***
+![Initialize](./images/initialize_tiles.png)
+
+### show my tiles. (press ``button 2``)
+***
+![User Tile](./images/show_user_tiles.png)
+
+### Show the tiles I can submit. (press ``button 3``)
+***
+![Submit Possible](./images/show_can_submit_tiles.png)
+### Exit the program (press ``button 0``)
+***
+![Game Over](./images/game_end.png)

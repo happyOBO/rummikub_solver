@@ -104,7 +104,6 @@ void init(void)
 
 void print_user_tiles()
 {
-    // char string_tiles[20][20] = {"NONE","|1 |","|2 |","|3 |","|4 |","|5 |","|6 |","|7 |","|8 |","|9 |", "|10|" ,"|11|","|12|","|13|"}; 
     try
     {
         for(int j = 1; j <= 14; j++)
@@ -185,22 +184,138 @@ void error_msg()
     "  |   |__| |__|     |    |   |    |___ |__/    |  |     |_|_| |  \\ |__| | \\| |__] .   |  \\ |___  |  |  \\   |   .\n"<<endl;
 }
 
-// void cmb_same_value()
-// {
-//     for(int i = 1;i <= 13; i++)
-//     {
-//         int count = 0;
-//         if(red_tiles[i] != 0) count++;
-//         if(yellow_tiles[i] != 0) count++;
-//         if(blue_tiles[i] != 0) count++;
-//         if(black_tiles[i] != 0) count++;
+void print_tile_vector(vector< pair<int,int> > v)
+{
+    cout<<endl;
+    for(int i = 0; i< v.size(); i++)
+    {
+        printf(".___  ");
+    }
+    cout<<endl;
+    for(int i = 0; i < v.size(); i++)
+    {
+        printf("|");
+        printf("\033[%dm%2d\033[0m",v[i].first, v[i].second);
+        printf("|  ");
+    }
+    cout<<endl;
+    for(int i = 0; i< v.size(); i++)
+    {
+        printf("|__|  ");
+    }
+    cout<<endl;
 
-//         if(3 <= count)
-//         {
+}
 
-//         }
-//     }
-// }
+void check_same_val()
+{
+    for(int i = 1;i <= 13; i++)
+    {
+        int count = 0;
+        if(red_tiles[i] != 0) count++;
+        if(yellow_tiles[i] != 0) count++;
+        if(blue_tiles[i] != 0) count++;
+        if(black_tiles[i] != 0) count++;
+        if(3 <= count)
+        {
+            vector < pair<int,int> > color_check ;
+            if(red_tiles[i] != 0) color_check.push_back(make_pair(RED, i));
+            if(yellow_tiles[i] != 0) color_check.push_back(make_pair(YELLOW,i));
+            if(blue_tiles[i] != 0) color_check.push_back(make_pair(BLUE,i));
+            if(black_tiles[i] != 0) color_check.push_back(make_pair(BLACK,i));
+            print_tile_vector(color_check);
+            
+        }
+    }
+}
+void check_continue_val()
+{
+    vector<pair<int,int> > continue_check;
+
+    for(int i = 1; i<= 14; i++)
+    {
+        if(i == 14 || red_tiles[i] == 0)
+        {
+            if(3 <= continue_check.size())
+            {
+                print_tile_vector(continue_check);
+                continue_check.clear();
+            }
+            else
+            {
+                continue_check.clear();
+            }
+            
+        }
+        else continue_check.push_back(make_pair(RED,i));
+
+    }
+    for(int i = 1; i<= 14; i++)
+    {
+        if(i == 14 || blue_tiles[i] == 0)
+        {
+            if(3 <= continue_check.size())
+            {
+                print_tile_vector(continue_check);
+                continue_check.clear();
+            }
+            else
+            {
+                continue_check.clear();
+            }
+            
+        }
+        else continue_check.push_back(make_pair(BLUE,i));
+
+    }
+    for(int i = 1; i<= 14; i++)
+    {
+        if(i == 14 || yellow_tiles[i] == 0)
+        {
+            if(3 <= continue_check.size())
+            {
+                print_tile_vector(continue_check);
+                continue_check.clear();
+            }
+            else
+            {
+                continue_check.clear();
+            }
+            
+        }
+        else continue_check.push_back(make_pair(YELLOW,i));
+
+    }
+    for(int i = 1; i<= 14; i++)
+    {
+        if(i == 14 || black_tiles[i] == 0)
+        {
+            if(3 <= continue_check.size())
+            {
+                print_tile_vector(continue_check);
+                continue_check.clear();
+            }
+            else
+            {
+                continue_check.clear();
+            }
+            
+        }
+        else continue_check.push_back(make_pair(BLACK,i));
+
+    }
+
+}
+
+void game_end()
+{
+    cout<<
+    "____ ____ _  _ ____    ____ _  _ ____ ____ \n"<<
+    "| __ |__| |\\/| |___    |  | |  | |___ |__/ \n"<<
+    "|__] |  | |  | |___    |__|  \\/  |___ |  \\ \n"<<endl;
+
+
+}
 
 int main(void)
 {
@@ -209,7 +324,7 @@ int main(void)
 
     while(button != 0)
     {
-        cout<<"Press the button to do what you want."<<endl;
+        cout<<endl;
         cout<<"1: Initialize my tiles."<<endl;
         cout<<"2: show my tiles."<<endl;
         cout<<"3: Show the tiles I can submit."<<endl;
@@ -218,10 +333,11 @@ int main(void)
         cout<<"6: Write Laying My tiles on the table"<<endl;
         cout<<"7: Write Laying Other's tiles on the table"<<endl;
         cout<<"0: Exit the program"<<endl;
+        cout<<"Press the button to do what you want. : ";
         cin>>button;
         if(button == 1)
         {
-            cout<<"You pressed the button 1."<<endl;
+            cout<<"\n You pressed the button 1."<<endl;
             init();
             int num_of_total_tiles = num_of_red_tiles + num_of_yellow_tiles + num_of_blue_tiles + num_of_black_tiles;
             if (num_of_total_tiles == 14)
@@ -236,11 +352,14 @@ int main(void)
         }
         else if(button == 2)
         {
+            cout<<"\n You pressed the button 2."<<endl;
             print_user_tiles();
         }
         else if(button == 3)
         {
-            cout<<"It's not prepared. comming soon."<<endl;
+            cout<<"\n You pressed the button 3."<<endl;
+            check_same_val();
+            check_continue_val();
         }
         else if(button == 4)
         {
@@ -257,7 +376,7 @@ int main(void)
         else if(button == 0)
         {
             cout<<"You pressed the exit button."<<endl;
-            cout<<"Bye!"<<endl;
+            game_end();
             break;
         }
         else
