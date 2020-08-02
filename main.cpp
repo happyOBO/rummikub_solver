@@ -4,16 +4,27 @@
 #include <bitset>
 #include <algorithm>
 #include <cmath>
+#include <map>
+#include <string>
+
+
+#define BLACK 7
+#define BLUE 46
+#define RED 41
+#define YELLOW 43
+
 
 using namespace std;
+void error_msg();
 
 int num_of_red_tiles,num_of_yellow_tiles,num_of_black_tiles,num_of_blue_tiles;
-vector<int> red_tiles;
-vector<int> yellow_tiles;
-vector<int> black_tiles;
-vector<int> blue_tiles;
+map<int,int> red_tiles;
+map<int,int> blue_tiles;
+map<int,int> yellow_tiles;
+map<int,int> black_tiles;
 
-void start(void)
+
+void show_ascii_art(void)
 {
     cout<<
     " ____                                _               _             ____          _                    \n"<<
@@ -25,96 +36,147 @@ void start(void)
     "\n                         ____ ____ _  _ ____    ____ ___ ____ ____ ___ \n"<<
     "                         | __ |__| |\\/| |___    [__   |  |__| |__/  |  \n"<<
     "                         |__] |  | |  | |___    ___]  |  |  | |  \\  | \n"<<endl;
-    cout<<"Write Your Tiles"<<endl;
-    cout<<"# of Received Red Tiles (ex: 5): ";
-    cin>>num_of_red_tiles;
-    cout<<"Received Red Tiles (ex: 1 3 5): ";
-    for(int i = 0; i < num_of_red_tiles; i++)
+}
+
+void init(void)
+{
+    try
     {
-        int tile;
-        cin>>tile;
-        red_tiles.push_back(tile);
-    }
-    cout<<"# of Received Yellow Tiles (ex: 5): ";
-    cin>>num_of_yellow_tiles;
-    cout<<"Received Yellow Tiles (ex: 1 3 5): ";
-    for(int i = 0; i < num_of_yellow_tiles; i++)
-    {
-        int tile;
-        cin>>tile;
-        yellow_tiles.push_back(tile);
-    }
-    cout<<"# of Received Black Tiles (ex: 5): ";
-    cin>>num_of_black_tiles;
-    cout<<"Received Black Tiles (ex: 1 3 5): ";
-    for(int i = 0; i < num_of_black_tiles; i++)
-    {
-        int tile;
-        cin>>tile;
-        black_tiles.push_back(tile);
-    }
-    cout<<"# of Received Blue Tiles (ex: 5): ";
-    cin>>num_of_blue_tiles;
-    cout<<"Received Blue Tiles (ex: 1 3 5): ";
-    for(int i = 0; i < num_of_blue_tiles; i++)
-    {
-        int tile;
-        cin>>tile;
-        blue_tiles.push_back(tile);
-    }
-    cout<<"The Tiles You Got"<<endl;
-    cout<<"================="<<endl;
-    if(14 == (num_of_red_tiles + num_of_yellow_tiles + num_of_black_tiles + num_of_blue_tiles))
-    {
-        for(int i = 0; i<14;i++)
+   
+        for(int i = 1; i<= 13; i++)
         {
-            if(i < num_of_red_tiles)
-            {
-                if(i == 0)
-                {
-                    cout<<"\nRed Tiles : ";
-                }
-                
-                cout<<red_tiles[i]<<" ";
-            }
-            else if(i < num_of_red_tiles + num_of_yellow_tiles)
-            {
-                if(i == num_of_red_tiles)
-                {
-                    cout<<"\nYellow Tiles : ";
-                }
-                
-                cout<<yellow_tiles[i-num_of_red_tiles]<<" ";
-            }
-            else if(i < num_of_red_tiles + num_of_yellow_tiles + num_of_black_tiles)
-            {
-                if(i == (num_of_red_tiles + num_of_yellow_tiles))
-                {
-                    cout<<"\nBlack Tiles : ";
-                }
-                
-                cout<<black_tiles[i-(num_of_red_tiles + num_of_yellow_tiles)]<<" ";
-            }
-            else
-            {
-                if(i == (num_of_red_tiles + num_of_yellow_tiles + num_of_black_tiles))
-                {
-                    cout<<"\nBlue Tiles : ";
-                }
-                
-                cout<<blue_tiles[i-(num_of_red_tiles + num_of_yellow_tiles + num_of_black_tiles)]<<" ";
-            }
+            red_tiles.insert(make_pair(i, 0));
+            yellow_tiles.insert(make_pair(i, 0));
+            black_tiles.insert(make_pair(i, 0));
+            blue_tiles.insert(make_pair(i, 0));
+        }
+
+        cout<<"Write down the tiles you have.\n"<<endl;
+        cout<<"# of Received Red Tiles (ex: 5): ";
+        cin>>num_of_red_tiles;
+        cout<<"Received Red Tiles (ex: 1 3 5): ";
+        for(int i = 0; i< num_of_red_tiles; i++)
+        {
+            int tile;
+            cin>>tile;
+            red_tiles[tile]++;
+        }
+
+        cout<<"# of Received Blue Tiles (ex: 5): ";
+        cin>>num_of_blue_tiles;
+        cout<<"Received Blue Tiles (ex: 1 3 5): ";
+        for(int i = 0; i< num_of_blue_tiles; i++)
+        {
+            int tile;
+            cin>>tile;
+            if(tile > 13) error_msg();
+            blue_tiles[tile]++;
+        }
+
+        cout<<"# of Received Yellow Tiles (ex: 5): ";
+        cin>>num_of_yellow_tiles;
+        cout<<"Received Yellow Tiles (ex: 1 3 5): ";
+        for(int i = 0; i< num_of_yellow_tiles; i++)
+        {
+            int tile;
+            cin>>tile;
+            if(tile > 13) error_msg();
+            yellow_tiles[tile]++;
+        }
+        
+        cout<<"# of Received Black Tiles (ex: 5): ";
+        cin>>num_of_black_tiles;
+        cout<<"Received Black Tiles (ex: 1 3 5): ";
+        for(int i = 0; i< num_of_black_tiles; i++)
+        {
+            int tile;
+            cin>>tile;
+            if(tile > 13) error_msg();
+            black_tiles[tile]++;
         }
     }
-    else
+    catch(int err)
     {
-        cout<<"You typed it wrong. Retry."<<endl;
+        error_msg();
+    }
+ 
+}
+
+void print_user_tiles()
+{
+    try
+    {
+        
+        for(int i = 1; i<= 13; i++)
+        {
+            if(red_tiles[i] != 0)
+            {
+                for(int j = 0; j < red_tiles[i]; j++)
+                {
+                    printf("\033[%dm%d\033[0m  ",RED, i);
+                }
+            }
+            
+        }
+        for(int i = 1; i<= 13; i++)
+        {
+            if(blue_tiles[i] != 0)
+            {
+                for(int j = 0; j < blue_tiles[i]; j++)
+                {
+                    printf("\033[%dm%d\033[0m  ", BLUE, i);
+                }
+            }    
+        }
+        for(int i = 1; i<= 13; i++)
+        {
+            if(yellow_tiles[i] != 0)
+            {
+                for(int j = 0; j < yellow_tiles[i]; j++)
+                {
+                    printf("\033[%dm%d\033[0m  ", YELLOW, i);
+                }
+            }
+        }
+        for(int i = 1; i<= 13; i++)
+        {
+            if(black_tiles[i] != 0)
+            {
+                for(int j = 0; j < black_tiles[i]; j++)
+                {
+                    printf("\033[%dm%d\033[0m  ",BLACK, i);
+                }
+            }
+        } 
+    }
+    catch(int err)
+    {
+        error_msg();
     }
 
+}
 
+void error_msg()
+{
+    cout<<
+    "_   _ ____ _  _    ___ _   _ ___  ____ ___     _ ___    _ _ _ ____ ____ _  _ ____     ____ ____ ___ ____ _   _  \\n"<<
+    " \\_/  |  | |  |     |   \\_/  |__] |___ |  \\    |  |     | | | |__/ |  | |\\ | | __     |__/ |___  |  |__/  \\_/   \\n"<<
+    "  |   |__| |__|     |    |   |    |___ |__/    |  |     |_|_| |  \\ |__| | \\| |__] .   |  \\ |___  |  |  \\   |   .\\n"<<endl;
 }
 
 int main(void)
 {
-    start();
+    show_ascii_art();
+    init();
+    int num_of_total_tiles = num_of_red_tiles + num_of_yellow_tiles + num_of_blue_tiles + num_of_black_tiles;
+    if (num_of_total_tiles == 14)
+    {
+        print_user_tiles();
+    }
+    else
+    {
+        error_msg();
+    }
+    
+    
 }
