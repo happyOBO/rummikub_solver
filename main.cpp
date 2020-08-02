@@ -104,50 +104,101 @@ void init(void)
 
 void print_user_tiles()
 {
+    char string_tiles[20][20] = {"NONE","|1 |","|2 |","|3 |","|4 |","|5 |","|6 |","|7 |","|8 |","|9 |", "|10|" ,"|11|","|12|","|13|"}; 
     try
     {
-        
+        for(int j = 0; j < num_of_red_tiles; j++)
+        {
+            printf("\033[%dm%s\033[0m  ",RED, ".___");
+        }
+        cout<<endl;
         for(int i = 1; i<= 13; i++)
         {
             if(red_tiles[i] != 0)
             {
                 for(int j = 0; j < red_tiles[i]; j++)
                 {
-                    printf("\033[%dm%d\033[0m  ",RED, i);
+                    printf("\033[%dm%s\033[0m  ",RED, string_tiles[i]);
                 }
+
             }
             
         }
+        cout<<endl;
+        for(int j = 0; j < num_of_red_tiles; j++)
+        {
+            printf("\033[%dm%s\033[0m  ",RED, "|__|");
+        }
+        cout<<endl;
+
+        for(int j = 0; j < num_of_blue_tiles; j++)
+        {
+            printf("\033[%dm%s\033[0m  ", BLUE, ".___");
+        }
+        cout<<endl;
         for(int i = 1; i<= 13; i++)
         {
             if(blue_tiles[i] != 0)
             {
+
                 for(int j = 0; j < blue_tiles[i]; j++)
                 {
-                    printf("\033[%dm%d\033[0m  ", BLUE, i);
+                    printf("\033[%dm%s\033[0m  ", BLUE, string_tiles[i]);
                 }
             }    
         }
+        cout<<endl;
+        for(int j = 0; j < num_of_blue_tiles; j++)
+        {
+            printf("\033[%dm%s\033[0m  ", BLUE, "|__|");
+        }
+
+        cout<<endl;
+
+
+        for(int j = 0; j < num_of_yellow_tiles; j++)
+        {
+            printf("\033[%dm%s\033[0m  ", YELLOW, ".___");
+        }
+        cout<<endl;
         for(int i = 1; i<= 13; i++)
         {
             if(yellow_tiles[i] != 0)
             {
                 for(int j = 0; j < yellow_tiles[i]; j++)
                 {
-                    printf("\033[%dm%d\033[0m  ", YELLOW, i);
+                    printf("\033[%dm%s\033[0m  ", YELLOW, string_tiles[i]);
                 }
             }
         }
+        cout<<endl;
+        for(int j = 0; j < num_of_yellow_tiles; j++)
+        {
+            printf("\033[%dm%s\033[0m  ", YELLOW, "|__|");
+        }
+
+        cout<<endl;
+        for(int j = 0; j < num_of_black_tiles; j++)
+        {
+            printf("\033[%dm%s\033[0m  ",BLACK,  ".___");
+        }
+        cout<<endl;
         for(int i = 1; i<= 13; i++)
         {
             if(black_tiles[i] != 0)
             {
                 for(int j = 0; j < black_tiles[i]; j++)
                 {
-                    printf("\033[%dm%d\033[0m  ",BLACK, i);
+                    printf("\033[%dm%s\033[0m  ",BLACK, string_tiles[i]);
                 }
             }
         } 
+        cout<<endl;
+        for(int j = 0; j < num_of_black_tiles; j++)
+        {
+            printf("\033[%dm%s\033[0m  ",BLACK, "|__|");
+        }
+        cout<<endl;
     }
     catch(int err)
     {
@@ -159,9 +210,9 @@ void print_user_tiles()
 void error_msg()
 {
     cout<<
-    "_   _ ____ _  _    ___ _   _ ___  ____ ___     _ ___    _ _ _ ____ ____ _  _ ____     ____ ____ ___ ____ _   _  \\n"<<
-    " \\_/  |  | |  |     |   \\_/  |__] |___ |  \\    |  |     | | | |__/ |  | |\\ | | __     |__/ |___  |  |__/  \\_/   \\n"<<
-    "  |   |__| |__|     |    |   |    |___ |__/    |  |     |_|_| |  \\ |__| | \\| |__] .   |  \\ |___  |  |  \\   |   .\\n"<<endl;
+    "\n_   _ ____ _  _    ___ _   _ ___  ____ ___     _ ___    _ _ _ ____ ____ _  _ ____     ____ ____ ___ ____ _   _  \n"<<
+    " \\_/  |  | |  |     |   \\_/  |__] |___ |  \\    |  |     | | | |__/ |  | |\\ | | __     |__/ |___  |  |__/  \\_/   \n"<<
+    "  |   |__| |__|     |    |   |    |___ |__/    |  |     |_|_| |  \\ |__| | \\| |__] .   |  \\ |___  |  |  \\   |   .\n"<<endl;
 }
 
 int main(void)
