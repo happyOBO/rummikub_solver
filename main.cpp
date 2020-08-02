@@ -8,10 +8,10 @@
 #include <string>
 
 
-#define BLACK 7
-#define BLUE 46
-#define RED 41
-#define YELLOW 43
+#define BLACK 0
+#define BLUE 36
+#define RED 31
+#define YELLOW 33
 
 
 using namespace std;
@@ -104,12 +104,12 @@ void init(void)
 
 void print_user_tiles()
 {
-    char string_tiles[20][20] = {"NONE","|1 |","|2 |","|3 |","|4 |","|5 |","|6 |","|7 |","|8 |","|9 |", "|10|" ,"|11|","|12|","|13|"}; 
+    // char string_tiles[20][20] = {"NONE","|1 |","|2 |","|3 |","|4 |","|5 |","|6 |","|7 |","|8 |","|9 |", "|10|" ,"|11|","|12|","|13|"}; 
     try
     {
-        for(int j = 0; j < num_of_red_tiles; j++)
+        for(int j = 1; j <= 14; j++)
         {
-            printf("\033[%dm%s\033[0m  ",RED, ".___");
+            printf(".___  ");
         }
         cout<<endl;
         for(int i = 1; i<= 13; i++)
@@ -118,24 +118,14 @@ void print_user_tiles()
             {
                 for(int j = 0; j < red_tiles[i]; j++)
                 {
-                    printf("\033[%dm%s\033[0m  ",RED, string_tiles[i]);
+                    printf("|");
+                    printf("\033[%dm%2d\033[0m",RED, i);
+                    printf("|  ");
                 }
 
             }
             
         }
-        cout<<endl;
-        for(int j = 0; j < num_of_red_tiles; j++)
-        {
-            printf("\033[%dm%s\033[0m  ",RED, "|__|");
-        }
-        cout<<endl;
-
-        for(int j = 0; j < num_of_blue_tiles; j++)
-        {
-            printf("\033[%dm%s\033[0m  ", BLUE, ".___");
-        }
-        cout<<endl;
         for(int i = 1; i<= 13; i++)
         {
             if(blue_tiles[i] != 0)
@@ -143,60 +133,40 @@ void print_user_tiles()
 
                 for(int j = 0; j < blue_tiles[i]; j++)
                 {
-                    printf("\033[%dm%s\033[0m  ", BLUE, string_tiles[i]);
+                    printf("|");
+                    printf("\033[%dm%2d\033[0m",BLUE, i);
+                    printf("|  ");
                 }
             }    
         }
-        cout<<endl;
-        for(int j = 0; j < num_of_blue_tiles; j++)
-        {
-            printf("\033[%dm%s\033[0m  ", BLUE, "|__|");
-        }
-
-        cout<<endl;
-
-
-        for(int j = 0; j < num_of_yellow_tiles; j++)
-        {
-            printf("\033[%dm%s\033[0m  ", YELLOW, ".___");
-        }
-        cout<<endl;
         for(int i = 1; i<= 13; i++)
         {
             if(yellow_tiles[i] != 0)
             {
                 for(int j = 0; j < yellow_tiles[i]; j++)
                 {
-                    printf("\033[%dm%s\033[0m  ", YELLOW, string_tiles[i]);
+                    printf("|");
+                    printf("\033[%dm%2d\033[0m",YELLOW, i);
+                    printf("|  ");
                 }
             }
         }
-        cout<<endl;
-        for(int j = 0; j < num_of_yellow_tiles; j++)
-        {
-            printf("\033[%dm%s\033[0m  ", YELLOW, "|__|");
-        }
-
-        cout<<endl;
-        for(int j = 0; j < num_of_black_tiles; j++)
-        {
-            printf("\033[%dm%s\033[0m  ",BLACK,  ".___");
-        }
-        cout<<endl;
         for(int i = 1; i<= 13; i++)
         {
             if(black_tiles[i] != 0)
             {
                 for(int j = 0; j < black_tiles[i]; j++)
                 {
-                    printf("\033[%dm%s\033[0m  ",BLACK, string_tiles[i]);
+                    printf("|");
+                    printf("\033[%dm%2d\033[0m",BLACK, i);
+                    printf("|  ");
                 }
             }
         } 
         cout<<endl;
-        for(int j = 0; j < num_of_black_tiles; j++)
+        for(int j = 1; j <= 14; j++)
         {
-            printf("\033[%dm%s\033[0m  ",BLACK, "|__|");
+            printf("|__|  ");
         }
         cout<<endl;
     }
@@ -214,6 +184,23 @@ void error_msg()
     " \\_/  |  | |  |     |   \\_/  |__] |___ |  \\    |  |     | | | |__/ |  | |\\ | | __     |__/ |___  |  |__/  \\_/   \n"<<
     "  |   |__| |__|     |    |   |    |___ |__/    |  |     |_|_| |  \\ |__| | \\| |__] .   |  \\ |___  |  |  \\   |   .\n"<<endl;
 }
+
+// void cmb_same_value()
+// {
+//     for(int i = 1;i <= 13; i++)
+//     {
+//         int count = 0;
+//         if(red_tiles[i] != 0) count++;
+//         if(yellow_tiles[i] != 0) count++;
+//         if(blue_tiles[i] != 0) count++;
+//         if(black_tiles[i] != 0) count++;
+
+//         if(3 <= count)
+//         {
+
+//         }
+//     }
+// }
 
 int main(void)
 {
