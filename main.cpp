@@ -205,16 +205,66 @@ void error_msg()
 int main(void)
 {
     show_ascii_art();
-    init();
-    int num_of_total_tiles = num_of_red_tiles + num_of_yellow_tiles + num_of_blue_tiles + num_of_black_tiles;
-    if (num_of_total_tiles == 14)
+    int button = -1;
+
+    while(button != 0)
     {
-        print_user_tiles();
+        cout<<"Press the button to do what you want."<<endl;
+        cout<<"1: Initialize my tiles."<<endl;
+        cout<<"2: show my tiles."<<endl;
+        cout<<"3: Show the tiles I can submit."<<endl;
+        cout<<"4: Add one tile"<<endl;
+        cout<<"5: Show tiles on the table"<<endl;
+        cout<<"6: Write Laying My tiles on the table"<<endl;
+        cout<<"7: Write Laying Other's tiles on the table"<<endl;
+        cout<<"0: Exit the program"<<endl;
+        cin>>button;
+        if(button == 1)
+        {
+            cout<<"You pressed the button 1."<<endl;
+            init();
+            int num_of_total_tiles = num_of_red_tiles + num_of_yellow_tiles + num_of_blue_tiles + num_of_black_tiles;
+            if (num_of_total_tiles == 14)
+            {
+                cout<<"Done."<<endl;
+            }
+            else
+            {
+                error_msg();
+            }
+            
+        }
+        else if(button == 2)
+        {
+            print_user_tiles();
+        }
+        else if(button == 3)
+        {
+            cout<<"It's not prepared. comming soon."<<endl;
+        }
+        else if(button == 4)
+        {
+            cout<<"It's not prepared. comming soon."<<endl;
+        }
+        else if(button == 5)
+        {
+            cout<<"It's not prepared. comming soon."<<endl;
+        }
+        else if(button == 6)
+        {
+            cout<<"It's not prepared. comming soon."<<endl;
+        }
+        else if(button == 0)
+        {
+            cout<<"You pressed the exit button."<<endl;
+            cout<<"Bye!"<<endl;
+            break;
+        }
+        else
+        {
+            cout<<"Sorry. Press the button again."<<endl;
+        }
+        
     }
-    else
-    {
-        error_msg();
-    }
-    
     
 }
