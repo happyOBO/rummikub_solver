@@ -34,6 +34,8 @@ Laying tiles on the table shall be arranged according to the following condition
 - [x] ~~get iput usig ```map```~~
 - [x] ~~Among the 14 tiles received, select the ones that can be registered.~~
 - [ ] Show tiles on the table
+- [ ] Show the tiles I can submit using tiles on table.
+- [x] ~~Add new tiles in my tiles~~
 - [ ] Write Laying My tiles on the table
 - [ ] Write Laying Other's tiles on the table
 - [ ] Determine which tiles can be submitted, including those on the table.

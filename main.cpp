@@ -17,7 +17,7 @@
 using namespace std;
 void error_msg();
 
-int num_of_red_tiles,num_of_yellow_tiles,num_of_black_tiles,num_of_blue_tiles;
+int num_of_red_tiles,num_of_yellow_tiles,num_of_black_tiles,num_of_blue_tiles,num_of_total_tiles = 0;
 map<int,int> red_tiles;
 map<int,int> blue_tiles;
 map<int,int> yellow_tiles;
@@ -40,17 +40,28 @@ void show_ascii_art(void)
 
 void init(void)
 {
+    red_tiles.clear();
+    yellow_tiles.clear();
+    black_tiles.clear();
+    blue_tiles.clear();
+    for(int i = 1; i<= 13; i++)
+    {
+        red_tiles.insert(make_pair(i, 0));
+        yellow_tiles.insert(make_pair(i, 0));
+        black_tiles.insert(make_pair(i, 0));
+        blue_tiles.insert(make_pair(i, 0));
+    }
+    num_of_red_tiles = 0;
+    num_of_yellow_tiles = 0;
+    num_of_black_tiles = 0;
+    num_of_blue_tiles = 0;
+    num_of_total_tiles = 0;
+}
+
+void add_tiles(void)
+{
     try
     {
-   
-        for(int i = 1; i<= 13; i++)
-        {
-            red_tiles.insert(make_pair(i, 0));
-            yellow_tiles.insert(make_pair(i, 0));
-            black_tiles.insert(make_pair(i, 0));
-            blue_tiles.insert(make_pair(i, 0));
-        }
-
         cout<<"Write down the tiles you have.\n"<<endl;
         cout<<"# of Received Red Tiles (ex: 5): ";
         cin>>num_of_red_tiles;
@@ -94,6 +105,10 @@ void init(void)
             if(tile > 13) error_msg();
             black_tiles[tile]++;
         }
+        num_of_total_tiles += num_of_red_tiles;
+        num_of_total_tiles += num_of_yellow_tiles;
+        num_of_total_tiles += num_of_blue_tiles;
+        num_of_total_tiles += num_of_black_tiles;
     }
     catch(int err)
     {
@@ -106,7 +121,7 @@ void print_user_tiles()
 {
     try
     {
-        for(int j = 1; j <= 14; j++)
+        for(int j = 1; j <= num_of_total_tiles; j++)
         {
             printf(".___  ");
         }
@@ -163,7 +178,7 @@ void print_user_tiles()
             }
         } 
         cout<<endl;
-        for(int j = 1; j <= 14; j++)
+        for(int j = 1; j <= num_of_total_tiles; j++)
         {
             printf("|__|  ");
         }
@@ -327,11 +342,12 @@ int main(void)
         cout<<endl;
         cout<<"1: Initialize my tiles."<<endl;
         cout<<"2: show my tiles."<<endl;
-        cout<<"3: Show the tiles I can submit."<<endl;
-        cout<<"4: Add one tile"<<endl;
-        cout<<"5: Show tiles on the table"<<endl;
-        cout<<"6: Write Laying My tiles on the table"<<endl;
-        cout<<"7: Write Laying Other's tiles on the table"<<endl;
+        cout<<"3: Show the tiles I can submit using only my tiles."<<endl;
+        cout<<"4: Show the tiles I can submit using tiles on table."<<endl;
+        cout<<"5: Add new tiles in my tiles"<<endl;
+        cout<<"6: Show tiles on the table"<<endl;
+        cout<<"7: Write Laying My tiles on the table"<<endl;
+        cout<<"8: Write Laying Others' tiles on the table"<<endl;
         cout<<"0: Exit the program"<<endl;
         cout<<"Press the button to do what you want. : ";
         cin>>button;
@@ -339,6 +355,7 @@ int main(void)
         {
             cout<<"\n You pressed the button 1."<<endl;
             init();
+            add_tiles();
             int num_of_total_tiles = num_of_red_tiles + num_of_yellow_tiles + num_of_blue_tiles + num_of_black_tiles;
             if (num_of_total_tiles == 14)
             {
@@ -363,13 +380,23 @@ int main(void)
         }
         else if(button == 4)
         {
+            cout<<"\n You pressed the button 4."<<endl;
             cout<<"It's not prepared. comming soon."<<endl;
         }
         else if(button == 5)
         {
-            cout<<"It's not prepared. comming soon."<<endl;
+            cout<<"\n You pressed the button 5."<<endl;
+            add_tiles();
         }
         else if(button == 6)
+        {
+            cout<<"It's not prepared. comming soon."<<endl;
+        }
+        else if(button == 7)
+        {
+            cout<<"It's not prepared. comming soon."<<endl;
+        }
+        else if(button == 8)
         {
             cout<<"It's not prepared. comming soon."<<endl;
         }
@@ -381,7 +408,7 @@ int main(void)
         }
         else
         {
-            cout<<"Sorry. Press the button again."<<endl;
+            error_msg();
         }
         
     }
