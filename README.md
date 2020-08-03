@@ -6,23 +6,23 @@
 |_| \_\ \__,_||_| |_| |_||_| |_| |_||_||_|\_\ \__,_||_.__/  |____/  \___/ |_|  \_/   \___||_|   
 ```
 ***You can see README in **[KOR](https://github.com/happyOBO/rummicube_solver/blob/master/README_kor.md)*****
-## Rummicube Solver
+## Rummikub Solver
 
-I like the RummiCube board game. I have a strong desire to win. After losing a series of Rummikub games, I thought. Was I unlucky enough to win with the tiles I got? or Is it because I'm not good enough? This program proposes a solution of all the tiles I can register. If you use this and lose, you're unlucky.
+I like the Rummikub board game. I have a strong desire to win. After losing a series of Rummikub games, I thought. Was I unlucky enough to win with the tiles I got? or Is it because I'm not good enough? This program proposes a solution of all the tiles I can register. If you use this and lose, you're unlucky.
 
-## How to play
-
+## what is Rummikub?
+***
 It starts with 14 tiles, each for 2-4 people. Combine and put down the tiles you have on the table according to the rules, so that the person who puts down all the tiles he/she has and burns them out wins.
 
-## Rule
+### Rule
 
-### Resister
+#### Resister
 
 Before combining the cards at the table, you must set them up through the procedure called Registration. The initial registration is subject to the following conditions:
 - You have to do it with the tiles you have.
 - The tile value must be at least 30. (Tile values are the numbers engraved on the tiles.)
 Laying tiles on the table shall be arranged according to the following conditions.
-### Play
+#### Play
 
 - a combination of three or more numbers in the same color.
 - a combination of three or four numbers of the same value for different colors.
@@ -38,6 +38,13 @@ Laying tiles on the table shall be arranged according to the following condition
 - [x] ~~Write Laying My tiles on the table~~
 - [x] ~~Write Laying Other's tiles on the table~~
 - [x] ~~Determine which tiles can be submitted, including those on the table.~~
+
+## how to executer the solver
+```bash
+git clone https://github.com/happyOBO/rummikub_solver.git
+g++ main.cpp
+./a.out
+```
 
 ## Current Executon Screen
 
