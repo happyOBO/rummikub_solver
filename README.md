@@ -1,10 +1,9 @@
 ```
- ____                                _               _             ____          _                    
-|  _ \  _   _  _ __ ___   _ __ ___  (_)  ___  _   _ | |__    ___  / ___|   ___  | |__   __  ___  _ __ 
-| |_) || | | || '_ ` _ \ | '_ ` _ \ | | / __|| | | || '_ \  / _ \ \___ \  / _ \ | |\ \ / / / _ \| '__|
-|  _ < | |_| || | | | | || | | | | || || (__ | |_| || |_) ||  __/  ___) || (_) || | \ V / |  __/| |   
-|_| \_\ \__,_||_| |_| |_||_| |_| |_||_| \___| \__,_||_.__/  \___| |____/  \___/ |_|  \_/   \___||_|   
-                                                                                                      
+ ____                                _  _            _       ____          _                    
+|  _ \  _   _  _ __ ___   _ __ ___  (_)| | __ _   _ | |__   / ___|   ___  | |__   __  ___  _ __ 
+| |_) || | | || '_ ` _ \ | '_ ` _ \ | || |/ /| | | || '_ \  \___ \  / _ \ | |\ \ / / / _ \| '__|
+|  _ < | |_| || | | | | || | | | | || ||   < | |_| || |_) |  ___) || (_) || | \ V / |  __/| |   
+|_| \_\ \__,_||_| |_| |_||_| |_| |_||_||_|\_\ \__,_||_.__/  |____/  \___/ |_|  \_/   \___||_|   
 ```
 ***You can see README in **[KOR](https://github.com/happyOBO/rummicube_solver/blob/master/README_kor.md)*****
 ## Rummicube Solver
@@ -53,6 +52,26 @@ Laying tiles on the table shall be arranged according to the following condition
 ### Show the tiles I can submit. (press ``button 3``)
 ***
 ![Submit Possible](./images/show_can_submit_tiles.png)
+
+### Show the tiles I can submit. (press ``button 3``)
+***
+![Submit Possible](./images/show_can_submit_tiles.png)
+### add new tiles and Show the tiles I can submit. (press ``button 5`` and ``button 6``)
+***
+![Submit Possible](./images/add_tiles.png)
+![Submit Possible](./images/show_add_tiles.png)
+
+### Write Laying My tiles on the table and Show the tiles on table. (press ``button 7`` and ``button 6``)
+***
+![Submit Possible](./images/submit_my_tiles.png)
+![Submit Possible](./images/show_submit.png)
+
+### Write Laying My tiles on the table and Show the tiles on table.(press ``button 8`` and ``button 6``)
+***
+![Submit Possible](./images/submit_other_tiles.png)
+![Submit Possible](./images/show_other_submit.png)
+
+
 ### Exit the program (press ``button 0``)
 ***
 ![Game Over](./images/game_end.png)
