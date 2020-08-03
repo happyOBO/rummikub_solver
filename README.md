@@ -32,12 +32,12 @@ Laying tiles on the table shall be arranged according to the following condition
 - [x] ~~enter the 14 tiles received by color.~~
 - [x] ~~get iput usig ```map```~~
 - [x] ~~Among the 14 tiles received, select the ones that can be registered.~~
-- [x] Show tiles on the table
+- [x] ~~Show tiles on the table~~
 - [ ] Show the tiles I can submit using tiles on table.
 - [x] ~~Add new tiles in my tiles~~
-- [x] Write Laying My tiles on the table
-- [x] Write Laying Other's tiles on the table
-- [x] Determine which tiles can be submitted, including those on the table.
+- [x] ~~Write Laying My tiles on the table~~
+- [x] ~~Write Laying Other's tiles on the table~~
+- [x] ~~Determine which tiles can be submitted, including those on the table.~~
 
 ## Current Executon Screen
 
