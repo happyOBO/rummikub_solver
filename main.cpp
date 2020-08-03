@@ -23,6 +23,12 @@ map<int,int> blue_tiles;
 map<int,int> yellow_tiles;
 map<int,int> black_tiles;
 
+int num_of_table_red_tiles,num_of_table_yellow_tiles,num_of_table_black_tiles, num_of_table_blue_tiles,num_of_table_total_tiles =0;
+map<int,int> table_red_tiles;
+map<int,int> table_blue_tiles;
+map<int,int> table_yellow_tiles;
+map<int,int> table_black_tiles;
+
 
 void show_ascii_art(void)
 {
@@ -44,18 +50,32 @@ void init(void)
     yellow_tiles.clear();
     black_tiles.clear();
     blue_tiles.clear();
+    table_red_tiles.clear();
+    table_blue_tiles.clear();
+    table_yellow_tiles.clear();
+    table_black_tiles.clear();
+
     for(int i = 1; i<= 13; i++)
     {
         red_tiles.insert(make_pair(i, 0));
         yellow_tiles.insert(make_pair(i, 0));
         black_tiles.insert(make_pair(i, 0));
         blue_tiles.insert(make_pair(i, 0));
+        table_red_tiles.insert(make_pair(i, 0));
+        table_yellow_tiles.insert(make_pair(i, 0));
+        table_black_tiles.insert(make_pair(i, 0));
+        table_blue_tiles.insert(make_pair(i, 0));
     }
     num_of_red_tiles = 0;
     num_of_yellow_tiles = 0;
     num_of_black_tiles = 0;
     num_of_blue_tiles = 0;
     num_of_total_tiles = 0;
+    num_of_table_red_tiles = 0;
+    num_of_table_yellow_tiles = 0;
+    num_of_table_black_tiles = 0;
+    num_of_table_blue_tiles = 0;
+    num_of_table_total_tiles = 0;
 }
 
 void add_tiles(void)
@@ -116,6 +136,191 @@ void add_tiles(void)
     }
  
 }
+
+
+void add_table_tiles(bool is_user)
+{
+    try
+    {
+        cout<<"Write down the new tiles on the table.\n"<<endl;
+        cout<<"# of new Red Tiles (ex: 5): ";
+        cin>>num_of_table_red_tiles;
+        cout<<"new Red Tiles (ex: 1 3 5): ";
+        for(int i = 0; i< num_of_table_red_tiles; i++)
+        {
+            int tile;
+            cin>>tile;
+            if(is_user)
+            {
+                if(red_tiles[tile] > 0)
+                {
+                    red_tiles[tile]--;
+                    num_of_total_tiles--;
+                }
+                else
+                {
+                    error_msg();
+                    return ;
+                }
+            }
+            table_red_tiles[tile]++;
+        }
+
+        cout<<"# of new Blue Tiles (ex: 5): ";
+        cin>>num_of_table_blue_tiles;
+        cout<<"new Blue Tiles (ex: 1 3 5): ";
+        for(int i = 0; i< num_of_table_blue_tiles; i++)
+        {
+            int tile;
+            cin>>tile;
+            if(is_user)
+            {
+                if(blue_tiles[tile] > 0)
+                {
+                    blue_tiles[tile]--;
+                    num_of_total_tiles--;
+                }
+                else
+                {
+                    error_msg();
+                    return ;
+                }
+            }
+            table_blue_tiles[tile]++;
+        }
+
+        cout<<"# of new Yellow Tiles (ex: 5): ";
+        cin>>num_of_table_yellow_tiles;
+        cout<<"new Yellow Tiles (ex: 1 3 5): ";
+        for(int i = 0; i< num_of_table_yellow_tiles; i++)
+        {
+            int tile;
+            cin>>tile;
+            if(is_user)
+            {
+                if(yellow_tiles[tile] > 0)
+                {
+                    yellow_tiles[tile]--;
+                    num_of_total_tiles--;
+                }
+                else
+                {
+                    error_msg();
+                    return ;
+                }
+            }
+            table_yellow_tiles[tile]++;
+        }
+        
+        cout<<"# of new Black Tiles (ex: 5): ";
+        cin>>num_of_table_black_tiles;
+        cout<<"new Black Tiles (ex: 1 3 5): ";
+        for(int i = 0; i< num_of_table_black_tiles; i++)
+        {
+            int tile;
+            cin>>tile;
+            if(is_user)
+            {
+                if(black_tiles[tile] > 0)
+                {
+                    black_tiles[tile]--;
+                    num_of_total_tiles--;
+                }
+                else
+                {
+                    error_msg();
+                    return ;
+                }
+            }
+            table_black_tiles[tile]++;
+        }
+        num_of_table_total_tiles += num_of_table_red_tiles;
+        num_of_table_total_tiles += num_of_table_yellow_tiles;
+        num_of_table_total_tiles += num_of_table_blue_tiles;
+        num_of_table_total_tiles += num_of_table_black_tiles;
+    }
+    catch(int err)
+    {
+        error_msg();
+    }
+ 
+}
+
+void print_table_tiles()
+{
+    try
+    {
+        for(int j = 1; j <= num_of_table_total_tiles; j++)
+        {
+            printf(".___  ");
+        }
+        cout<<endl;
+        for(int i = 1; i<= 13; i++)
+        {
+            if(table_red_tiles[i] != 0)
+            {
+                for(int j = 0; j < table_red_tiles[i]; j++)
+                {
+                    printf("|");
+                    printf("\033[%dm%2d\033[0m",RED, i);
+                    printf("|  ");
+                }
+
+            }
+            
+        }
+        for(int i = 1; i<= 13; i++)
+        {
+            if(table_blue_tiles[i] != 0)
+            {
+
+                for(int j = 0; j < table_blue_tiles[i]; j++)
+                {
+                    printf("|");
+                    printf("\033[%dm%2d\033[0m",BLUE, i);
+                    printf("|  ");
+                }
+            }    
+        }
+        for(int i = 1; i<= 13; i++)
+        {
+            if(table_yellow_tiles[i] != 0)
+            {
+                for(int j = 0; j < table_yellow_tiles[i]; j++)
+                {
+                    printf("|");
+                    printf("\033[%dm%2d\033[0m",YELLOW, i);
+                    printf("|  ");
+                }
+            }
+        }
+        for(int i = 1; i<= 13; i++)
+        {
+            if(table_black_tiles[i] != 0)
+            {
+                for(int j = 0; j < table_black_tiles[i]; j++)
+                {
+                    printf("|");
+                    printf("\033[%dm%2d\033[0m",BLACK, i);
+                    printf("|  ");
+                }
+            }
+        } 
+        cout<<endl;
+        for(int j = 1; j <= num_of_table_total_tiles; j++)
+        {
+            printf("|__|  ");
+        }
+        cout<<endl;
+    }
+    catch(int err)
+    {
+        error_msg();
+    }
+
+}
+
+
 
 void print_user_tiles()
 {
@@ -199,7 +404,7 @@ void error_msg()
     "  |   |__| |__|     |    |   |    |___ |__/    |  |     |_|_| |  \\ |__| | \\| |__] .   |  \\ |___  |  |  \\   |   .\n"<<endl;
 }
 
-void print_tile_vector(vector< pair<int,int> > v)
+void print_specific_tile(vector< pair<int,int> > v)
 {
     cout<<endl;
     for(int i = 0; i< v.size(); i++)
@@ -238,7 +443,7 @@ void check_same_val()
             if(yellow_tiles[i] != 0) color_check.push_back(make_pair(YELLOW,i));
             if(blue_tiles[i] != 0) color_check.push_back(make_pair(BLUE,i));
             if(black_tiles[i] != 0) color_check.push_back(make_pair(BLACK,i));
-            print_tile_vector(color_check);
+            print_specific_tile(color_check);
             
         }
     }
@@ -253,7 +458,7 @@ void check_continue_val()
         {
             if(3 <= continue_check.size())
             {
-                print_tile_vector(continue_check);
+                print_specific_tile(continue_check);
                 continue_check.clear();
             }
             else
@@ -271,7 +476,7 @@ void check_continue_val()
         {
             if(3 <= continue_check.size())
             {
-                print_tile_vector(continue_check);
+                print_specific_tile(continue_check);
                 continue_check.clear();
             }
             else
@@ -289,7 +494,7 @@ void check_continue_val()
         {
             if(3 <= continue_check.size())
             {
-                print_tile_vector(continue_check);
+                print_specific_tile(continue_check);
                 continue_check.clear();
             }
             else
@@ -307,7 +512,7 @@ void check_continue_val()
         {
             if(3 <= continue_check.size())
             {
-                print_tile_vector(continue_check);
+                print_specific_tile(continue_check);
                 continue_check.clear();
             }
             else
@@ -386,20 +591,24 @@ int main(void)
         }
         else if(button == 5)
         {
+            
             cout<<"\n You pressed the button 5."<<endl;
             add_tiles();
         }
         else if(button == 6)
         {
-            cout<<"It's not prepared. comming soon."<<endl;
+            cout<<"\n You pressed the button 6."<<endl;
+            print_table_tiles();
         }
         else if(button == 7)
         {
-            cout<<"It's not prepared. comming soon."<<endl;
+            cout<<"\n You pressed the button 7."<<endl;
+            add_table_tiles(true);
         }
         else if(button == 8)
         {
-            cout<<"It's not prepared. comming soon."<<endl;
+            cout<<"\n You pressed the button 8."<<endl;
+            add_table_tiles(false);
         }
         else if(button == 0)
         {
