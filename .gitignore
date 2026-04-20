@@ -3,3 +3,7 @@ a.out
 .vscode/settings.json
 images/.DS_Store
 .DS_Store
+
+.idea/
+x64/
+.vs/
